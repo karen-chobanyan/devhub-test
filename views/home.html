@@ -1,0 +1,84 @@
+<h2 class="text-center">Devhub Test</h2>
+
+<table ng-table="tableParams" class="table" id="users" show-filter="true">
+  <tr>
+    <th style="text-align: left"></th>
+    <th style="text-align: left">Контактное Лицо</th>
+    <th style="text-align: left">Телефон</th>
+    <th style="text-align: left">Электронная почта</th>
+    <th style="text-align: left"><button class="btn btn-success"  data-toggle="modal" data-target="#new-contact">+ Добавить</button></th>
+  </tr>
+  <tr ng-dblclick="openUser(item.id)" ng-repeat="item in users track by item.id">
+    <td><img src="{{ item.avatar }}" alt=""></td>
+    <td  title="'Контактное лицо'" filter="{ name: 'text'}" sortable="'lastname'"> {{ item.lastname }} {{ item.firstname }} {{ item.middlename }}</td>
+
+    <td>{{ item.phone }}</td>
+    <td>{{ item.email }}</td>
+    <td><button class="btn btn-danger" data-toggle="modal" ng-click="confirmDelete(item)" data-target="#confirm-delete">x Удалить</button></td>
+  </tr>
+
+</table>
+
+
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body">
+                Вы дествительно хотите удалить контакт {{contactToDelete.lastname + ' ' + contactToDelete.firstname + ' ' + contactToDelete.middlename}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <a class="btn btn-danger btn-ok" data-dismiss="modal" ng-click="delteContact(contactToDelete)">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="new-contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label >Фамилия</label>
+                    <input requred type="text" class="form-control" ng-model="lastname" placeholder="Фамилия">
+
+                  </div>
+                  <div class="form-group">
+                      <label >Имя</label>
+                      <input requred ng-model="firstname" type="text" class="form-control"  placeholder="Имя">
+
+                    </div>
+                    <div class="form-group">
+                        <label >Отчество</label>
+                        <input requred ng-model="middlename" type="text" class="form-control"  placeholder="Отчество">
+
+                      </div>
+                      <div class="form-group">
+                          <label >Электронная почта</label>
+                          <input requred ng-model="email" type="text" class="form-control"  placeholder="Электронная почта">
+
+                        </div>
+                        <div class="form-group">
+                            <label >Телефон</label>
+                            <input requred ng-model="phone" type="text" class="form-control"  placeholder="Телефон">
+
+                          </div>
+                          <div class="form-group">
+                              <label >Ссылка на аватар</label>
+                              <input requred ng-model="avatar" type="text" class="form-control"  placeholder="Ссылка на аватар">
+                            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <a class="btn btn-danger btn-ok" data-dismiss="modal" ng-click="createContact()">Добавить</a>
+            </div>
+        </div>
+    </div>
+</div>

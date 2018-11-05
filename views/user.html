@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-lg-12">
+    <br>
+    <a ng-click="back()"><- Вернутся назад</a>
+    <br>
+  </div>
+<div class="col-md-3">
+  <img class="pull-left" src="{{user.avatar}}" alt="">
+  <h4>{{user.lastname}} {{user.firstname}} {{user.middlename}}</h4>
+  <br>
+  <div class="clearfix"></div>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <table class="table table-bordered">
+      <tr>
+        <td>Телефон</td>
+        <td>{{user.phone}}</td>
+      </tr>
+      <tr>
+        <td>Электронная почта</td>
+        <td>{{user.email}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
